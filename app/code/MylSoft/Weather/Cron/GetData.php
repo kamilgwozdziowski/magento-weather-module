@@ -18,7 +18,7 @@ class GetData
     public function __construct(ObjectManagerInterface $objectManager, Curl $curlClient) {
 		$this->_objectManager = $objectManager;
         $this->_curlClient = $curlClient;
-        $this->_apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q={city},{code}&appid=3f343b0ca451c3d06e48b7220b0c7c4d';
+        $this->_apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q={city},{code}&units=metric&appid=3f343b0ca451c3d06e48b7220b0c7c4d';
 	}
 	
 	private function getCityData(string $city, string $countryCode): array {
