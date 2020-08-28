@@ -1,0 +1,13 @@
+{
+    "weather": {
+        "column": {
+            "id": true,
+            "name": true,
+            "temp": true,
+            "time": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
