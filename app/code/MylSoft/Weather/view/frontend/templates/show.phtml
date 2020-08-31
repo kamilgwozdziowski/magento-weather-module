@@ -1,0 +1,39 @@
+<?php
+use Magento\Framework\View\Element\Template;
+/** @var Template $block */
+
+$weather = $block->getData('weather');
+?>
+
+<h1>Weather in Lublin</h1>
+<table>
+    <tr>
+        <th>Date of reading</th>
+        <td><?= $weather['time'] ?></td>
+    </tr>
+    <tr>
+        <th>Temperature</th>
+        <td><?= $weather['temp'] ?></td>
+    </tr>
+    <tr>
+        <th>Temperature min</th>
+        <td><?= $weather['temp_min'] ?></td>
+    </tr>
+    <tr>
+        <th>Temperature max</th>
+        <td><?= $weather['temp_max'] ?></td>
+    </tr>
+    <tr>
+        <th>Pressure</th>
+        <td><?= $weather['pressure'] ?></td>
+    </tr>
+    <tr>
+        <th>Humidity</th>
+        <td><?= $weather['humidity'] ?></td>
+    </tr>
+    <tr>
+        <th>Clouds</th>
+        <td><?= $weather['clouds'] ?></td>
+    </tr>
+    <tr>
+</table>

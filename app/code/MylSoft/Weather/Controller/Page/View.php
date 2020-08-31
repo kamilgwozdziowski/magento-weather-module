@@ -2,24 +2,12 @@
 namespace MylSoft\Weather\Controller\Page;
 
 use \Magento\Framework\App\ObjectManager;
-use \Magento\Framework\App\Action\Context;
-use \Magento\Framework\Controller\Result\JsonFactory;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\View\Result\Page;
 
-class View extends \Magento\Framework\App\Action\Action
+class View extends Action
 {
-    /**
-     * @var \Magento\Framework\Controller\Result\JsonFactory
-     */
-    protected $resultJsonFactory;
-    /**
-     * @param \Magento\Framework\App\Action\Context $context
-     * @param \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
-     */
-    public function __construct(Context $context, JsonFactory $resultJsonFactory)
-{
-       $this->resultJsonFactory = $resultJsonFactory;
-       parent::__construct($context);
-}
     /**
      * View  page action
      *
@@ -27,12 +15,21 @@ class View extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-       $result = $this->resultJsonFactory->create();
+       $page = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
 
        $objectManager = ObjectManager::getInstance();
 
        $dataCollection = $objectManager->create('MylSoft\Weather\Model\Weather')->getCollection();                    
-       $data = $dataCollection->getLastItem()->getData();
+       $weather = $dataCollection->getLastItem()->getData();
 
-       return $result->setData($data);
-} }
+       $block = $page->getLayout()->getBlock('mylsoft.weather.layout.view');
+       $block->setData('weather', $weather);
+
+       return $page;
+    }
+
+    public function getData()
+    {
+        return 111;
+    }
+}
